@@ -150,7 +150,8 @@
     color: #fff;
     transition: color .4s ease;
   }
-  .nav.scrolled .nav-burger { color: var(--ink); }
+  .nav.scrolled .nav-burger,
+  body.menu-open .nav-burger { color: var(--ink); }
   .nav-burger span {
     position: absolute;
     left: 10px; right: 10px;
@@ -256,10 +257,13 @@
     line-height: 1;
     transition: color .4s ease;
   }
-  .nav.scrolled .brand { color: var(--ink); }
-  .nav.scrolled .brand .mark { background: var(--ink); }
+  .nav.scrolled .brand,
+  body.menu-open .brand { color: var(--ink); }
+  .nav.scrolled .brand .mark,
+  body.menu-open .brand .mark { background: var(--ink); }
   .brand .name small { color: rgba(255,255,255,.65); }
-  .nav.scrolled .brand .name small { color: var(--muted); }
+  .nav.scrolled .brand .name small,
+  body.menu-open .brand .name small { color: var(--muted); }
   .brand .mark {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 6px 14px;
@@ -280,11 +284,9 @@
   .brand .name small {
     font-family: var(--mono);
     font-size: 9.5px; letter-spacing: 0.18em;
-    color: rgba(255,255,255,.6);
     text-transform: uppercase;
     transition: color .4s ease;
   }
-  .nav.scrolled .brand .name small { color: var(--muted); }
   .nav-links {
     display: flex;
     gap: 36px;
@@ -850,6 +852,23 @@
   .atlas-row:not(.head):hover { transform: translateX(14px); color: var(--accent); }
   .atlas-row:not(.head):hover .city { color: var(--accent); }
 
+  /* ── All-projects link ─────────────────────────────── */
+  .all-projects-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: all .35s ease;
+  }
+  .all-projects-link:hover { background: var(--accent); color: #fff; }
+  .all-projects-link .arr { transition: transform .35s ease; }
+  .all-projects-link:hover .arr { transform: translateX(3px); }
+
   /* ── Brand strip (replaces journal) ───────────────────── */
   .brandstrip-grid {
     display: grid;
@@ -1316,12 +1335,64 @@
     </div>
   </div>
 
+  <!-- ─── Selected work — projects upfront ──────────── -->
+  <section class="selected-work" style="padding: 100px 0 var(--sec-y);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="l">
+          <span class="sec-num">N° 02 — Selected work</span>
+          <h2 class="display">Recent <em>projects</em>.</h2>
+        </div>
+        <div class="sec-head-r">
+          <p class="lede" style="margin: 0 0 22px;">
+            Six recent openings across Ontario. Tap any tile to step inside the project.
+          </p>
+          <a href="projects.html" class="all-projects-link">
+            View all projects <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="brandstrip-grid reveal d1">
+      <a href="projects.html#downtown-toronto" class="img balcony has-photo">
+        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · I</span>
+        <span class="cap">Downtown Toronto · 94-key boutique · 2024</span>
+      </a>
+      <a href="projects.html#bradford" class="img bath has-photo">
+        <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · II</span>
+        <span class="cap">Bradford, ON · Select service · 2024</span>
+      </a>
+      <a href="projects.html#north-bay" class="img balcony has-photo">
+        <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · III</span>
+        <span class="cap">North Bay, ON · 62-key hotel · 2025</span>
+      </a>
+      <a href="projects.html#mississauga" class="img bath has-photo">
+        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · IV</span>
+        <span class="cap">Mississauga, ON · Extended stay · 2025</span>
+      </a>
+      <a href="projects.html#brampton" class="img balcony has-photo">
+        <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · V</span>
+        <span class="cap">Brampton, ON · Full service · 2025</span>
+      </a>
+      <a href="projects.html#hamilton" class="img bath has-photo">
+        <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · VI</span>
+        <span class="cap">Hamilton, ON · Heritage hotel · 2026</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ─── Arrival — image-led intro ───────────────────── -->
   <section class="arrival" id="about">
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="l">
-          <span class="sec-num">N° 02 — Intent</span>
+          <span class="sec-num">N° 03 — Intent</span>
           <h2 class="display">A house for<br/>the <em>arrival</em>.</h2>
         </div>
         <p class="lede">
@@ -1356,7 +1427,7 @@
       <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Atmospheric luxury suite interior at evening with warm lighting" width="2000" height="1333" loading="lazy" />
       <div class="bleed-cap">
         <div>
-          <span class="meta" style="display:block; margin-bottom: 18px;">N° 03 — Atmosphere</span>
+          <span class="meta" style="display:block; margin-bottom: 18px;">N° 04 — Atmosphere</span>
           <h3>Furnished for the <em>guest</em>,<br/>not the floorplan.</h3>
         </div>
         <p>
@@ -1372,7 +1443,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="l">
-          <span class="sec-num">N° 04 — Practice</span>
+          <span class="sec-num">N° 05 — Practice</span>
           <h2 class="display">What the<br/>house <em>delivers</em>.</h2>
         </div>
         <p class="lede">
@@ -1471,7 +1542,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="l">
-          <span class="sec-num">N° 05 — Approach</span>
+          <span class="sec-num">N° 06 — Approach</span>
           <h2 class="display">From brief<br/>to <em>opening</em>.</h2>
         </div>
         <p class="lede">
@@ -1511,7 +1582,7 @@
       <img src="https://images.pexels.com/photos/2598683/pexels-photo-2598683.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Grand hotel lobby with marble columns and warm lighting" width="2000" height="1333" loading="lazy" />
       <div class="bleed-cap">
         <div>
-          <span class="meta" style="display:block; margin-bottom: 18px;">N° 06 — Reach</span>
+          <span class="meta" style="display:block; margin-bottom: 18px;">N° 07 — Reach</span>
           <h3>Forty markets,<br/>one <em>private</em> line.</h3>
         </div>
         <p>
@@ -1527,7 +1598,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="l">
-          <span class="sec-num">N° 07 — Presence</span>
+          <span class="sec-num">N° 08 — Presence</span>
           <h2 class="display">Where the<br/>house <em>keeps</em> rooms.</h2>
         </div>
         <p class="lede">
@@ -1570,53 +1641,6 @@
           <span>10</span><span class="city">Turkey</span><span>Istanbul · partner</span><span>2024</span><span>→</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ─── Brand strip — replaces journal ──────────────── -->
-  <section style="padding: var(--sec-y) 0 0;">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="l">
-          <span class="sec-num">N° 08 — The House</span>
-          <h2 class="display">Quiet rooms,<br/>well <em>kept</em>.</h2>
-        </div>
-        <p class="lede">
-          A small portfolio of recent openings — discretion does the rest.
-        </p>
-      </div>
-    </div>
-    <div class="brandstrip-grid reveal d1">
-      <a href="projects.html#downtown-toronto" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · I</span>
-        <span class="cap">Downtown Toronto · 94-key boutique · 2024</span>
-      </a>
-      <a href="projects.html#bradford" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · II</span>
-        <span class="cap">Bradford, ON · Select service · 2024</span>
-      </a>
-      <a href="projects.html#north-bay" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · III</span>
-        <span class="cap">North Bay, ON · 62-key hotel · 2025</span>
-      </a>
-      <a href="projects.html#mississauga" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · IV</span>
-        <span class="cap">Mississauga, ON · Extended stay · 2025</span>
-      </a>
-      <a href="projects.html#brampton" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · V</span>
-        <span class="cap">Brampton, ON · Full service · 2025</span>
-      </a>
-      <a href="projects.html#hamilton" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · VI</span>
-        <span class="cap">Hamilton, ON · Heritage hotel · 2026</span>
-      </a>
     </div>
   </section>
 

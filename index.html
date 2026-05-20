@@ -6,7 +6,7 @@
 <title>VTrade Connections — A Global Hospitality Trading House</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <script>
   // Tweak block — host can rewrite on disk.
@@ -31,6 +31,7 @@
     --ink:       #0f172a;
     --ink-2:     #334155;
     --muted:     #64748b;
+    --muted-2:   #4b5563;
     --line:      rgba(15,23,42,.1);
     --line-2:    rgba(15,23,42,.06);
     --accent:    #2563eb;
@@ -42,9 +43,36 @@
     --maxw:  1480px;
 
     --sans:       "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-    --serif:      "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-    --serif-text: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --serif:      "Instrument Serif", Georgia, serif;
+    --serif-text: "Instrument Serif", Georgia, serif;
     --mono:       "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:      #0f0f0f;
+      --bg-2:    #161923;
+      --paper:   #1a2035;
+      --ink:     #e8e8e4;
+      --ink-2:   #a1aab8;
+      --muted:   #6b7888;
+      --muted-2: #8492a6;
+      --line:    rgba(255,255,255,.1);
+      --line-2:  rgba(255,255,255,.06);
+      --accent:  #4f8ef7;
+      --accent-2:#3b78e8;
+    }
+    .nav.scrolled {
+      background: rgba(15,15,15,.92);
+      border-bottom-color: rgba(255,255,255,.1);
+    }
+    .mobile-drawer { background: #0f0f0f; }
+    .quote { background: #161923; }
+    .offer-card { background: #1a1d28; }
+    .nav.scrolled .brand,
+    body.menu-open .brand { color: var(--ink); }
+    .nav.scrolled .brand .mark,
+    body.menu-open .brand .mark { background: var(--ink); color: #0f0f0f; }
   }
 
   * { box-sizing: border-box; }
@@ -78,11 +106,11 @@
 
   .eyebrow {
     font-family: var(--mono);
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--muted-2);
   }
   .eyebrow .dot {
     display:inline-block; width:5px; height:5px; border-radius:50%;
@@ -91,21 +119,22 @@
   }
 
   .lede {
-    font-family: var(--sans);
+    font-family: var(--serif-text);
     font-weight: 400;
-    font-style: normal;
-    font-size: clamp(18px, 1.5vw, 24px);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    font-style: italic;
+    font-size: clamp(20px, 1.7vw, 28px);
+    line-height: 1.45;
+    letter-spacing: -0.005em;
     color: var(--ink-2);
     text-wrap: pretty;
+    max-width: 52ch;
   }
 
   .meta {
     font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.22em;
-    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--muted-2);
     text-transform: uppercase;
   }
 
@@ -430,10 +459,10 @@
   }
   .hero-foot .proof .lbl {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(243,236,224,.6);
+    color: rgba(243,236,224,.82);
   }
 
   .hero-scroll {
@@ -463,6 +492,9 @@
     animation: scroll 70s linear infinite;
     align-items: center;
   }
+  .placeband:hover .placeband-track {
+    animation-play-state: paused;
+  }
   @keyframes scroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -485,18 +517,20 @@
     margin-bottom: 80px;
   }
   .sec-head .l { display: flex; flex-direction: column; gap: 18px; }
+  .sec-head .sec-head-r { max-width: 580px; }
   .sec-head h2 {
     font-size: clamp(42px, 5.8vw, 88px);
     margin: 0;
     text-wrap: balance;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--ink);
     letter-spacing: -0.025em;
   }
+  .sec-head h2 em { font-style: italic; color: var(--accent); }
   .sec-num {
     font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: 0.22em;
-    color: var(--muted);
+    font-size: 12px; letter-spacing: 0.14em;
+    color: var(--muted-2);
     text-transform: uppercase;
   }
 
@@ -658,22 +692,26 @@
   .offer-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+    gap: 20px;
   }
   .offer-card {
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 36px 28px 32px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(15,23,42,.06), 0 4px 16px rgba(15,23,42,.04);
+    padding: 28px 24px 28px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 22px;
     min-height: 360px;
     position: relative;
-    transition: background .5s ease;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
   }
-  .offer-card:hover { background: var(--bg-2); }
+  .offer-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--line));
+    box-shadow: 0 2px 6px rgba(15,23,42,.08), 0 10px 24px rgba(15,23,42,.06);
+  }
   .offer-card .img {
     aspect-ratio: 4/3;
     width: 100%;
@@ -765,8 +803,8 @@
   }
   .step .sn {
     font-family: var(--mono);
-    font-size: 10px; letter-spacing: 0.22em;
-    color: var(--muted);
+    font-size: 12px; letter-spacing: 0.14em;
+    color: var(--muted-2);
     text-transform: uppercase;
   }
   .step h5 {
@@ -796,11 +834,11 @@
   .quote .wrap-q { max-width: 1100px; margin: 0 auto; }
   .quote blockquote {
     margin: 0;
-    font-family: var(--sans);
-    font-weight: 700; font-style: normal;
-    font-size: clamp(26px, 3vw, 48px);
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+    font-family: var(--serif);
+    font-weight: 400; font-style: italic;
+    font-size: clamp(30px, 3.4vw, 56px);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
     color: var(--ink);
     text-wrap: balance;
   }
@@ -810,8 +848,8 @@
     margin-top: 36px;
     display: flex; align-items: center; gap: 16px;
     font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: 0.22em;
-    color: var(--muted);
+    font-size: 12px; letter-spacing: 0.14em;
+    color: var(--muted-2);
     text-transform: uppercase;
   }
   .quote .attr .rule { width: 40px; height: 1px; background: var(--accent); }
@@ -829,17 +867,21 @@
     border-bottom: 1px solid var(--line);
     align-items: baseline;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.04em;
     color: var(--ink-2);
-    transition: padding .5s ease, color .35s ease;
+    transition: padding .5s ease, color .35s ease, background .35s ease;
   }
   .atlas-row.head {
-    color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 0.22em;
+    color: var(--muted-2);
+    font-size: 11px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 14px 0;
+  }
+  .atlas-row .city {
+    padding-right: 24px;
+    border-right: 1px solid var(--line);
   }
   .atlas-row .city {
     font-family: var(--sans);
@@ -849,7 +891,11 @@
     color: var(--ink);
     letter-spacing: -0.02em;
   }
-  .atlas-row:not(.head):hover { transform: translateX(14px); color: var(--accent); }
+  .atlas-row:not(.head):hover {
+    transform: translateX(14px);
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 4%, transparent);
+  }
   .atlas-row:not(.head):hover .city { color: var(--accent); }
 
   /* ── All-projects link ─────────────────────────────── */
@@ -873,12 +919,27 @@
   .brandstrip-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
+    gap: 32px 20px;
   }
-  .brandstrip-grid .img { aspect-ratio: 4/3; cursor: pointer; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-  .brandstrip-grid a.img { display: block; text-decoration: none; }
-  .brandstrip-grid .img:hover { transform: scale(1.01); }
-  .brandstrip-grid .img:hover::after {
+  .brandstrip-grid .img-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .brandstrip-grid .img-card:hover { transform: translateY(-4px); }
+  .brandstrip-grid .img-card .img {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .brandstrip-grid .img-card .img img {
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .brandstrip-grid .img-card:hover .img img { transform: scale(1.04); }
+  .brandstrip-grid .img-card .img::after {
     content: "View project →";
     position: absolute; left: 18px; bottom: 18px;
     z-index: 3;
@@ -890,6 +951,30 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .brandstrip-grid .img-card:hover .img::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .img-label {
+    padding: 14px 0 6px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+  .img-label .proj-title {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
   }
   .brandstrip-grid .img.balcony { aspect-ratio: 4/3; }
   .brandstrip-grid .img.bath    { aspect-ratio: 4/3; }
@@ -1144,12 +1229,11 @@
     /* Offer grid → single column on mobile */
     .offer-grid {
       grid-template-columns: 1fr;
-      border-left: 1px solid var(--line);
-      border-top: 1px solid var(--line);
+      gap: 14px;
     }
     .offer-card {
       min-height: 0;
-      padding: 24px 20px;
+      padding: 22px 20px;
       gap: 16px;
     }
     .offer-card h3 { font-size: 22px; }
@@ -1190,12 +1274,14 @@
     .atlas-row .city { font-size: 22px; }
     .atlas-row:not(.head):hover { transform: none; }
 
-    /* Brand strip → single column 4/3 */
+    /* Brand strip → 2 columns on mobile */
     .brandstrip-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 4px;
+      gap: 22px 12px;
     }
     .brandstrip-grid .img { aspect-ratio: 4/3; }
+    .img-label { padding: 10px 0 4px; font-size: 12px; }
+    .img-label .proj-title { font-size: 14px; }
 
     /* CTA */
     .cta h2 { font-size: clamp(36px, 11vw, 64px); margin-bottom: 32px; line-height: 1.0; }
@@ -1207,10 +1293,10 @@
     .cta-row .col a, .cta-row .col p { font-size: 18px; }
     .big-cta {
       margin-top: 36px;
-      padding: 18px 24px;
+      padding: 18px 22px;
       width: 100%;
       justify-content: space-between;
-      font-size: 10px;
+      font-size: 15px;
     }
 
     /* Footer — single column */
@@ -1354,35 +1440,65 @@
       </div>
     </div>
     <div class="brandstrip-grid reveal d1">
-      <a href="projects.html#downtown-toronto" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · I</span>
-        <span class="cap">Downtown Toronto · 94-key boutique · 2024</span>
+      <a href="projects.html#downtown-toronto" class="img-card">
+        <div class="img balcony has-photo">
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · I</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">Downtown Toronto</span>
+          <span class="proj-meta">94-key boutique · 2024</span>
+        </div>
       </a>
-      <a href="projects.html#bradford" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · II</span>
-        <span class="cap">Bradford, ON · Select service · 2024</span>
+      <a href="projects.html#bradford" class="img-card">
+        <div class="img bath has-photo">
+          <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · II</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">Bradford, ON</span>
+          <span class="proj-meta">Select service · 2024</span>
+        </div>
       </a>
-      <a href="projects.html#north-bay" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · III</span>
-        <span class="cap">North Bay, ON · 62-key hotel · 2025</span>
+      <a href="projects.html#north-bay" class="img-card">
+        <div class="img balcony has-photo">
+          <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · III</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">North Bay, ON</span>
+          <span class="proj-meta">62-key hotel · 2025</span>
+        </div>
       </a>
-      <a href="projects.html#mississauga" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · IV</span>
-        <span class="cap">Mississauga, ON · Extended stay · 2025</span>
+      <a href="projects.html#mississauga" class="img-card">
+        <div class="img bath has-photo">
+          <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · IV</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">Mississauga, ON</span>
+          <span class="proj-meta">Extended stay · 2025</span>
+        </div>
       </a>
-      <a href="projects.html#brampton" class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · V</span>
-        <span class="cap">Brampton, ON · Full service · 2025</span>
+      <a href="projects.html#brampton" class="img-card">
+        <div class="img balcony has-photo">
+          <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · V</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">Brampton, ON</span>
+          <span class="proj-meta">Full service · 2025</span>
+        </div>
       </a>
-      <a href="projects.html#hamilton" class="img bath has-photo">
-        <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
-        <span class="frame-no">PORTFOLIO · VI</span>
-        <span class="cap">Hamilton, ON · Heritage hotel · 2026</span>
+      <a href="projects.html#hamilton" class="img-card">
+        <div class="img bath has-photo">
+          <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
+          <span class="frame-no">PORTFOLIO · VI</span>
+        </div>
+        <div class="img-label">
+          <span class="proj-title">Hamilton, ON</span>
+          <span class="proj-meta">Heritage hotel · 2026</span>
+        </div>
       </a>
     </div>
   </section>
